@@ -109,3 +109,61 @@ user_downloaded_file:
       - user_browser_activity
       - browser_download
       - browser_specific_file_download
+
+windows_operating_system:
+  display_name: What is the Windows Operating system?
+  description: Figuring out what Windows Operating system version is running on a specific system.
+  data_sources:
+    - windows_operatingsystem_version
+  answer_simple:
+    must:
+      - windows_operatingsystem_version
+
+windows_current_control_set:
+  display_name: What is the current active control set?
+  description: This question will answer which is the current control set based on registry.
+  data_sources:
+    - windows_current_control_set
+  answer_simple:
+    must:
+      - windows_current_control_set
+
+windows_local_time:
+  display_name: What is the local time setting?
+  description: This question will answer what the current time setting is and might reveal location of a system.
+  data_sources:
+    - windows_current_control_set
+    - windows_local_time
+  answer_simple:
+    must:
+      - windows_local_time
+
+windows_rdp_server_attempts
+  display: Are there attempts to log on via RDP?
+  description: Very broad question to determine if someone trying to logon via RDP
+  data_sources: 
+    - windows_rdp_logs
+  answer_simple:
+    must:
+      - windows_rdp_logs
+
+windows_prefetch_execution:
+  display: What was executed around a given timerange?
+  description: This question aims to take prefetch artifacts and determine execution of software on a system.
+  data_sources:
+    - windows_prefetch
+  parameters:
+    - before
+    - after
+  answer_simple:
+    must:
+      - windows_prefetch
+    
+windows_installed_services:
+  display: Did any service been installed?
+  description: Services can be a mechanism to maintain access.
+  data_sources:
+    - windows_installed_services
+  answer_simple:
+    must:
+      - windows_installed_services

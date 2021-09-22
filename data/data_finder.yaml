@@ -104,3 +104,39 @@ windows_event_log_specific_computer:
     re_parameters:
         - computer_name
 
+windows_operatingsystem_version:
+    description: 
+    notes: Collect the SOFTWARE hive of the system
+    query_string: data_type:"windows:registry:installation" AND parser:"winreg/windows_version"
+    attribute: product_name
+
+windows_current_control_set:
+    description: get the current active control set
+    notes: "Current: [REG_DWORD_LE] 1 Default: [REG_DWORD_LE] 1 Failed: [REG_DWORD_LE] 0 LastKnownGood: [REG_DWORD_LE] 2"
+    query_string: HKEY_LOCAL_MACHINE*System*Select
+    regular_expression: "Current: \[[A-Z_]+\] (\d) "
+
+windows_local_time:
+    description: Get information about the local time
+    notes: Check the key_path for the active control set e.g. HKEY_LOCAL_MACHINE\System\ControlSet001\Control\TimeZoneInformation
+    query_string: TimeZoneInformation
+    attribute: key_path
+    regular_expression: "HKEY_LOCAL_MACHINE\System\ControlSet00{active_control_set}\Control\TimeZoneInformation" #TODO improve that regex
+    re_parameters:
+        - active_control_set
+
+windows_rdp_logs:
+    description: Check if Windows RDP Server logs
+    notes: Not checking for any logon event_id yet
+    query_string: data_type:"windows:evtx:record" AND source_name:"Microsoft-Windows-RemoteDesktopServices-RdpCoreTS"
+
+windows_prefetch:
+    description: Windows prefetch is an artifact that something was executed
+    notes: Mostly useful if there is a specific time range that is interesting
+    query_string: data_type:"windows:prefetch:execution"
+
+windows_installed_services:
+    description: Windows Services install events
+    notes: Collect info about installed Windows Services
+    query_string: event_identifier:7045 AND source_name: "Service Control Manager"
+    attribute: source_name

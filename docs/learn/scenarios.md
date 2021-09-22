@@ -7,11 +7,11 @@ Everything below is stored in yaml files to be loaded and easy to edit.
 The model is:
 
 ```
-Scenario --- Investigation 1 --- Question 1
-         ``                  --- Question 2
+Scenario --- Investigation 1 --- Question 1 -- data_sources1, data_sources2
+         ``                  --- Question 2 -- data_sources2, data_sources3
          ``
-         --- Investigation 2 --- Question 1
-                             --- Question 3
+         --- Investigation 2 --- Question 1 -- data_sources4, data_sources99
+                             --- Question 3 -- data_sources5. data_sources6
 ```
 
 ## Questions
@@ -45,10 +45,21 @@ Each of the questions consist of the following fields:
 * parameters
 * analyzers
 
+The questions are defined in the ```data/scenarios/questions.yml``` file.
+
 ## Investigation
 
 Each investigation have one or more questions to be answered. Each investigaton has a display name and a description.
 
+The investigations are defined in the ```data/scenarios/investigations.yml``` file.
+
 ## Scenario
 
 Each scenario can have multiple investigations.
+
+The scenario are defined in the ```data/scenarios/scenarios.yml``` file.
+
+## data_sources
+
+Data sources is a way to ensure the data to answer the question is present in a sketch.
+Those are defined in the ```data/data_finder.yml``` file.

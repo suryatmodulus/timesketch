@@ -25,3 +25,10 @@ test_scenario2:
   investigations:
     - test_investigation
     - another_investigation
+
+stolen-szechuan-sauce:
+  display-name: Stolen Szechuan Sauce
+  description: Solving some of the questions from the Stolen Szechuan Sauce challenge (https://dfirmadness.com/the-stolen-szechuan-sauce/)
+  investigations:
+    - get_windows_system_info
+    - windows_persistence

@@ -27,3 +27,23 @@ another_investigation:
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   questions:
     - user_logged_in_win
+
+get_windows_system_info:
+  display_namr: Get various system info
+  description: Get various information about a windows machine
+  questions:
+    - windows_operating_system
+    - windows_current_control_set
+    - windows_local_time
+  
+get_windows_execution:
+  disaply: What was executed around a certain time range
+  description: Query various sources to find what might be executed around a before and after a timestamp
+  questions:
+    - windows_prefetch_execution
+
+windows_persistence:
+  display: What events could be targeted to get persistence
+  description: Lorem Ipsum
+  question:
+    - windows_installed_services
