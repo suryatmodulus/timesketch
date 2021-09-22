@@ -138,7 +138,7 @@ windows_local_time:
     must:
       - windows_local_time
 
-windows_rdp_server_attempts
+windows_rdp_server_attempts:
   display: Are there attempts to log on via RDP?
   description: Very broad question to determine if someone trying to logon via RDP
   data_sources: 
@@ -167,3 +167,12 @@ windows_installed_services:
   answer_simple:
     must:
       - windows_installed_services
+
+sensitive_files:
+  display: Have any sensitive files been created or accessed?
+  description: Find sensitive file creation or access events
+  data_source:
+    - compressed_files
+  answer_simple:
+    must:
+      - compressed_files

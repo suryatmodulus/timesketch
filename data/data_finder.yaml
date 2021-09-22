@@ -140,3 +140,8 @@ windows_installed_services:
     notes: Collect info about installed Windows Services
     query_string: event_identifier:7045 AND source_name: "Service Control Manager"
     attribute: source_name
+
+compressed_files:
+    description: Find compressed files based on file extension
+    notes: Collect compressed files based on file extension
+    query_string: *.zip OR *.tar.gz OR *.tgz OR *.tbz OR *.tar.bz2 OR *.cab OR *.7a

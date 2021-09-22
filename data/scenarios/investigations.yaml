@@ -47,3 +47,8 @@ windows_persistence:
   description: Lorem Ipsum
   question:
     - windows_installed_services
+
+sensitive_files:
+  display: Highlight sensitive file extension that are commonly used in exfil activity.
+  question:
+    - sensitive_files

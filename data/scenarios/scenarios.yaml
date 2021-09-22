@@ -32,3 +32,4 @@ stolen-szechuan-sauce:
   investigations:
     - get_windows_system_info
     - windows_persistence
+    - sensitive_files
