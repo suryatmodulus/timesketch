@@ -145,3 +145,8 @@ compressed_files:
     description: Find compressed files based on file extension
     notes: Collect compressed files based on file extension
     query_string: *.zip OR *.tar.gz OR *.tgz OR *.tbz OR *.tar.bz2 OR *.cab OR *.7a
+
+ttp_initial_access:
+    description: Find data that is labeled with initial access, exploit attempts.
+    notes: That can be done by manual labeling or analyzers e.g. Sigma analyzer.
+    query_string: ts_ttp:"attack.initial_access" OR tag:"*attack.t1190*" OR tag:"*initial_access*" 

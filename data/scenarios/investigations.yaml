@@ -35,7 +35,7 @@ get_windows_system_info:
     - windows_operating_system
     - windows_current_control_set
     - windows_local_time
-  
+
 get_windows_execution:
   disaply: What was executed around a certain time range
   description: Query various sources to find what might be executed around a before and after a timestamp
@@ -50,5 +50,25 @@ windows_persistence:
 
 sensitive_files:
   display: Highlight sensitive file extension that are commonly used in exfil activity.
-  question:
+  questions:
     - sensitive_files
+
+initial_access:
+  display: Any attempts to have initial access to a system?
+  questions:
+    - initial_access
+
+gcp_investigation:
+  display: Check various points that point to a compromised Google Cloud Project.
+  description: Based on various logs Based on: https://github.com/SigmaHQ/sigma/tree/master/rules/cloud/gcp
+  questions:
+    - gcp_bucket_enumeration
+    - gcp_bucket_modified_or_deleted
+    - gcp_dlp_re-identifies_sensitive_information
+    - gcp_dns_zone_modified_or_deleted
+    - gcp_firewall_rule_modified_or_deleted
+    - gcp_full_network_traffic_packet_capture
+    - gcp_kubernetes_secrets_modified_or_deleted
+    - gcp_service_account_disabled_or_deleted
+    - gcp_service_account_modified
+    - gcp_vpn_tunnel_modified_or_deleted

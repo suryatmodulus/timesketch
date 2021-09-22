@@ -141,7 +141,7 @@ windows_local_time:
 windows_rdp_server_attempts:
   display: Are there attempts to log on via RDP?
   description: Very broad question to determine if someone trying to logon via RDP
-  data_sources: 
+  data_sources:
     - windows_rdp_logs
   answer_simple:
     must:
@@ -158,7 +158,7 @@ windows_prefetch_execution:
   answer_simple:
     must:
       - windows_prefetch
-    
+
 windows_installed_services:
   display: Did any service been installed?
   description: Services can be a mechanism to maintain access.
@@ -176,3 +176,12 @@ sensitive_files:
   answer_simple:
     must:
       - compressed_files
+
+initial_access:
+  display: Where there signs of initial access, exploits etc?
+  description: Based on analyzers searching for initial access events.
+  data_sources:
+    - initial_access
+  answer_simple:
+    must:
+      - initial_access
